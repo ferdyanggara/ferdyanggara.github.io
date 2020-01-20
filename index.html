@@ -15,8 +15,13 @@
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<!-- Material Icons -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		
 	</head>
 	<body class="is-preload">
+<div id="preloader">
+	<div class="p">LOADING</div>
+</div>
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
@@ -285,6 +290,10 @@
 				integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 				crossorigin="anonymous"></script>
 
+				<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+				<script src="pace.js"></script>
+				<script src="https://cdn.jsdelivr.net/npm/jquery-bez@1.0.11/src/jquery.bez.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
 
 
 
@@ -309,6 +318,31 @@
 					typeWriter();
 				})
 			</script>
+			
+			<script>
+
+				paceOptions = {
+					ajax: true,
+					document: true,
+					eventLag: false
+				};
+
+				Pace.on('done', function () {
+					$('.p').delay(500).animate({ top: '30%', opacity: '0' }, 3000, $.bez([0.19, 1, 0.22, 1]));
+
+
+					$('#preloader').delay(1500).animate({ top: '-100%' }, 2000, $.bez([0.19, 1, 0.22, 1]));
+
+					TweenMax.from(".title", 2, {
+						delay: 1.8,
+						y: 10,
+						opacity: 0,
+						ease: Expo.easeInOut
+					})
+				});
+
+			</script>
+
 
 	
 			
